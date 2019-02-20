@@ -8,12 +8,34 @@
           text-decoration: none;
       }
 
+    #sign{
+      margin: 50px;
+      color: black;
+      font-size: 500%;
+      font-family: "American Typewriter";
+      position: relative;
+  -webkit-animation: mymove 1s infinite; /* Safari 4.0 - 8.0 */
+  animation: mymove 1s infinite;
+    }
+
+    /* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+  from {left: 0px;}
+  to {left: 50px;}
+}
+
+@keyframes mymove {
+  from {left: 0px;}
+  to {left: 50px;}
+}
+
      h1{
       margin: 50px;
       color: black;
       font-size: 500%;
       font-family: "American Typewriter";
      }
+
       body{
         margin: 0;
         display: inline-block;
@@ -31,7 +53,7 @@
   </style>
     <body>
         <h1>Patterns</h1>
-        <a href="block.html"><h1>></h1></a>
+        <a href="block.html"><div id="sign"><strong>></strong></div></a>
 
        <div id="pic">
           <img src="branches/b7.jpg">
