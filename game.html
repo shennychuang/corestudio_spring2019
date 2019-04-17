@@ -23,6 +23,18 @@
         z-index: 5;
     }
 
+    .fish{
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        top: 50px;
+        left: 50px;
+        background: url(fish.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        z-index: 5;
+    }
+
       .a{
         width: 40px;
         height: 50px;
@@ -267,8 +279,8 @@
         background-image: url(q.png);
         background-size: 100%;
         background-repeat: no-repeat;
-        margin-left: 10%;
-        margin-top: -10%;
+        left: 10%;
+        top: 10%;
       }
       .p{
         width: 40px;
@@ -293,58 +305,82 @@
 $(document).keydown(function(e){
     switch (e.which){
     case 37:    //left arrow key
-        $(".box").finish().animate({
+        $(".fish").finish().animate({
             left: "-=30"
         });
+        // $(".box").addClass("lookingleft") // add class to change direction the fish is looking (css: transform: rotate(90deg))
         break;
     case 38:    //up arrow key
-        $(".box").finish().animate({
+        $(".fish").finish().animate({
             top: "-=30"
         });
         break;
     case 39:    //right arrow key
-        $(".box").finish().animate({
+        $(".fish").finish().animate({
             left: "+=30"
         });
         break;
     case 40:    //bottom arrow key
-        $(".box").finish().animate({
+        $(".fish").finish().animate({
             top: "+=30"
         });
         break;
     }
+
+    var fishLeft = parseInt($(".fish").css("left").replace("px", ""))
+    var fishTop = parseInt($(".fish").css("top").replace("px", ""))
+
+    $(".letter").each(function(){
+        // for each letter: check its position in relationship to the fish
+
+        var letterLeft = parseInt($(this).css("left").replace("px", ""))
+        var letterTop = parseInt($(this).css("top").replace("px", ""))
+
+        console.log("letter", letterLeft, "fish", fishLeft)
+
+        if(fishLeft <= letterLeft + 30 && fishLeft >= letterLeft - 30 && fishTop <= letterTop + 30 && fishTop >= letterTop - 30){
+            
+
+            console.log("close to letter!", $(this).attr("class"))
+            $(this).css({display: "none"})
+            // $(this).remove()
+        }
+
+
+    })
+
 });
 </script>
 </head>
 <body>
    
-    <div class="box"></div>
-    <div class="a"></div>
-    <div class="t"></div>
-    <div class="o"></div>
-    <div class="b"></div>
-    <div class="x"></div>
-    <div class="n"></div>
-    <div class="v"></div>
-    <div class="h"></div>
-    <div class="y"></div>
-    <div class="w"></div>
-    <div class="s"></div>
-    <div class="m"></div>
-    <div class="z"></div>
-    <div class="g"></div>
-    <div class="r"></div>
-    <div class="k"></div>
-    <div class="f"></div>
-    <div class="e"></div>
-    <div class="d"></div>
-    <div class="c"></div>
-    <div class="i"></div>
-    <div class="l"></div>
-    <div class="j"></div>
-    <div class="u"></div>
-    <div class="q"></div>
-    <div class="p"></div>
+    <div class="fish"></div>
+    <div class="letter a"></div>
+    <div class="letter t"></div>
+    <div class="letter o"></div>
+    <div class="letter b"></div>
+    <div class="letter x"></div>
+    <div class="letter n"></div>
+    <div class="letter v"></div>
+    <div class="letter h"></div>
+    <div class="letter y"></div>
+    <div class="letter w"></div>
+    <div class="letter s"></div>
+    <div class="letter m"></div>
+    <div class="letter z"></div>
+    <div class="letter g"></div>
+    <div class="letter r"></div>
+    <div class="letter k"></div>
+    <div class="letter f"></div>
+    <div class="letter e"></div>
+    <div class="letter d"></div>
+    <div class="letter c"></div>
+    <div class="letter i"></div>
+    <div class="letter l"></div>
+    <div class="letter j"></div>
+    <div class="letter u"></div>
+    <div class="letter q"></div>
+    <div class="letter p"></div>
     <div class="text">Bite the letters in order!</div>
     
 
