@@ -14,15 +14,45 @@
     .text{
       font-size: 700%;
       font-family: "Impact";
-      color: white;
+      color: #484848;
       text-align: center;
-    }
+      animation: animate 1s infinite linear;
+      }
+      @keyframes animate
+      {
+          0% {
+              color: #484848;
+              text-shadow: none;
+          }
+          18% {
+              color: #484848;
+              text-shadow: none;
+          }
+          20% {
+              color: deeppink;
+              text-shadow: 0 0 7px rgb(255, 99, 71) , 0 0 20px #ff6347;
+          }
+          30% {
+              color: #484848;
+              text-shadow: none;
+          }
+          35% {
+              color: #484848;
+              text-shadow: none;
+          }
+          40% {
+              color: deeppink;
+              text-shadow: 0 0 7px rgb(255, 99, 71) , 0 0 20px #ff6347;
+          }
+        }
+
     .first{
       font-size: 40%;
       font-family: "Impact";
       color: white;
       text-align: center;
-    }
+      }
+      
   </style>
 
     <body>
