@@ -31,6 +31,9 @@
     .lookingdown{
         transform: rotate(-90deg);
     }
+    .lookingright{
+        transform: rotate(-180deg);
+    }
 
 
       .a{
@@ -324,8 +327,9 @@
         font-size: 18pt;
         font-family: sans-serif;
         color: white;
-        margin-top: 185%;
+        margin-top: 210%;
       }
+
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
@@ -335,30 +339,37 @@ $(document).keydown(function(e){
         $(".fish").finish().animate({
             left: "-=30"
         });
+        $(".fish").removeClass("lookingdown").removeClass("lookingright").removeClass("lookingup")
         $(".fish").addClass("lookingleft") // add class to change direction the fish is looking (css: transform: rotate(90deg))
         break;
     case 38:    //up arrow key
         $(".fish").finish().animate({
             top: "-=30"
         });
+        $(".fish").removeClass("lookingdown").removeClass("lookingright").removeClass("lookingleft")
         $(".fish").addClass("lookingup")
         break;
     case 39:    //right arrow key
         $(".fish").finish().animate({
             left: "+=30"
         });
+        $(".fish").removeClass("lookingdown").removeClass("lookingleft").removeClass("lookingup")
         $(".fish").addClass("lookingright")
         break;
     case 40:    //bottom arrow key
         $(".fish").finish().animate({
             top: "+=30"
         });
+        $(".fish").removeClass("lookingleft").removeClass("lookingright").removeClass("lookingup")
         $(".fish").addClass("lookingdown")
         break;
     }
 
     var fishLeft = parseInt($(".fish").css("left").replace("px", ""))
     var fishTop = parseInt($(".fish").css("top").replace("px", ""))
+
+    var myAlphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var alphaCounter = 0; // current letter to check against
 
     $(".letter").each(function(){
         // for each letter: check its position in relationship to the fish
@@ -370,6 +381,17 @@ $(document).keydown(function(e){
 
         if(fishLeft <= letterLeft + 30 && fishLeft >= letterLeft - 30 && fishTop <= letterTop + 30 && fishTop >= letterTop - 30){
             
+            
+
+            if($(this).hasClass(myAlphabet[alphaCounter])){
+                //correct class!
+                // anything that happens when you've gotten the correct letter
+                alphaCounter = alphaCounter + 1; // move on to next letter
+            }else{
+
+                // not correct class!
+                // anything that happens when you've gotten the wrong letter
+            }
 
             console.log("close to letter!", $(this).attr("class"))
             $(this).css({display: "none"})
