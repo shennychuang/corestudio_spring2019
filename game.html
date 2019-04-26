@@ -344,6 +344,7 @@
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
+
     var timeleft = 12;
     var downloadTimer = setInterval(function(){
     timeleft--;
@@ -351,6 +352,12 @@
     if(timeleft <= 0)
         clearInterval(downloadTimer);
     },1000);
+
+    $(window).load(function () {
+    window.setTimeout(function () {
+        window.location.href = "https://shennychuang.github.io/corestudio_spring2019/end.html";
+    }, 12000)
+});
 
 $(document).keydown(function(e){
     switch (e.which){
