@@ -323,16 +323,35 @@
         opacity: .7;
       }
       .text{
-        margin: 10%;
+        margin: 0;
         font-size: 18pt;
         font-family: "impact";
         color: white;
-        margin-top: 220%;
+        margin-top: 230%;
       }
-
+      #countdowntimer{
+        color: grey;
+        margin: 10%;
+        font-size: 10pt;
+        font-family: "impact";
+      }
+      p{
+        color: black;
+        margin: 0;
+        font-size: 10pt;
+        font-family: "impact";
+      }
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
+    var timeleft = 12;
+    var downloadTimer = setInterval(function(){
+    timeleft--;
+    document.getElementById("countdowntimer").textContent = timeleft;
+    if(timeleft <= 0)
+        clearInterval(downloadTimer);
+    },1000);
+
 $(document).keydown(function(e){
     switch (e.which){
     case 37:    //left arrow key
@@ -368,8 +387,6 @@ $(document).keydown(function(e){
     var fishLeft = parseInt($(".fish").css("left").replace("px", ""))
     var fishTop = parseInt($(".fish").css("top").replace("px", ""))
 
-    var myAlphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    var alphaCounter = 0; // current letter to check against
 
     $(".letter").each(function(){
         // for each letter: check its position in relationship to the fish
@@ -383,16 +400,6 @@ $(document).keydown(function(e){
             
             
 
-            if($(this).hasClass(myAlphabet[alphaCounter])){
-                
-                //correct class!
-                // anything that happens when you've gotten the correct letter
-                alphaCounter = alphaCounter + 1; // move on to next letter
-            }else{
-                // not correct class!
-                // anything that happens when you've gotten the wrong letter
-            }
-
             console.log("close to letter!", $(this).attr("class"))
             $(this).css({display: "none"})
             // $(this).remove()
@@ -405,7 +412,7 @@ $(document).keydown(function(e){
 </script>
 </head>
 <body>
-   
+    <p> You have <span id="countdowntimer">12 </span> seconds</p>
     <div class="fish"></div>
     <div class="letter a"></div>
     <div class="letter t"></div>
@@ -433,7 +440,7 @@ $(document).keydown(function(e){
     <div class="letter u"></div>
     <div class="letter q"></div>
     <div class="letter p"></div>
-    <div class="text">Bite the letters in order!</div>
+    <div class="text">Bite as many as you can!</div>
     
 
 </body>
